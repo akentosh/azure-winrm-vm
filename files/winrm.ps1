@@ -3,7 +3,8 @@ winrm delete winrm/config/listener?Address=*+Transport=HTTP  2>$Null
 winrm delete winrm/config/listener?Address=*+Transport=HTTPS 2>$Null
 
 Write-Host "Create a new WinRM listener and configure"
-winrm create winrm/config/listener?Address=*+Transport=HTTP
+#winrm create winrm/config/listener?Address=*+Transport=HTTP
+winrm create winrm/config/listener?Address=*+Transport=HTTPS
 winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="0"}'
 winrm set winrm/config '@{MaxTimeoutms="7200000"}'
 winrm set winrm/config/service '@{AllowUnencrypted="true"}'
