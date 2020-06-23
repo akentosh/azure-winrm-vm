@@ -51,7 +51,7 @@ resource "azurerm_virtual_machine" "win" {
   storage_image_reference {
     publisher = "MicrosoftWindowsServer"
     offer     = "WindowsServer"
-    sku       = "2019-Datacenter"
+    sku       = "2016-Datacenter"
     version   = "latest"
   }
 
@@ -104,17 +104,18 @@ resource "azurerm_virtual_machine" "win" {
     host     = azurerm_public_ip.win_pubip.fqdn
     type     = "winrm"
     port     = 5985
-    https    = false
-    timeout  = "5m"
+    #https    = false
+    https    = true
+    timeout  = "10m"
     user     = var.username
     password = var.password
     insecure = true
   }
 
-  #provisioner "file" {
-  #  source      = "files/config.ps1"
-  #  destination = "c:/terraform/config.ps1"
-  #}
+  provisioner "file" {
+    source      = "files/config.ps1"
+    destination = "c:/terraform/config.ps1"
+  }
 
   provisioner "remote-exec" {
     inline = [
