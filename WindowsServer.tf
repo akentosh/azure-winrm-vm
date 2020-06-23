@@ -105,7 +105,7 @@ resource "azurerm_virtual_machine" "win" {
     type     = "winrm"
     port     = 5985
     https    = false
-    timeout  = "2m"
+    timeout  = "5m"
     user     = var.username
     password = var.password
     insecure = true
@@ -120,7 +120,6 @@ resource "azurerm_virtual_machine" "win" {
     inline = [
       "PowerShell.exe -ExecutionPolicy Bypass c:\\terraform\\config.ps1",
     ]
-    timeout = "10m"
   }
 }
 
