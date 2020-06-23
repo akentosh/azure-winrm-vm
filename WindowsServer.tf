@@ -110,10 +110,10 @@ resource "azurerm_virtual_machine" "win" {
     password = var.password
   }
 
-  provisioner "file" {
-    source      = "files/config.ps1"
-    destination = "c:/terraform/config.ps1"
-  }
+  #provisioner "file" {
+  #  source      = "files/config.ps1"
+  #  destination = "c:/terraform/config.ps1"
+  #}
 
   provisioner "remote-exec" {
     inline = [
