@@ -108,6 +108,7 @@ resource "azurerm_virtual_machine" "win" {
     timeout  = "2m"
     user     = var.username
     password = var.password
+    insecure = true
   }
 
   #provisioner "file" {
@@ -119,6 +120,7 @@ resource "azurerm_virtual_machine" "win" {
     inline = [
       "PowerShell.exe -ExecutionPolicy Bypass c:\\terraform\\config.ps1",
     ]
+    timeout = "10m"
   }
 }
 

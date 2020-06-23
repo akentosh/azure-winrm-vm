@@ -27,4 +27,3 @@ Start-Service -Name WinRM
 
 Write-Host "Open Firewall Ports"
 netsh advfirewall firewall add rule name="Windows Remote Management (HTTPS-In)" dir=in action=allow protocol=TCP localport=5986
-#>
