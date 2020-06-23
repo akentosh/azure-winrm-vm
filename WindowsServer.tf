@@ -69,6 +69,15 @@ resource "azurerm_virtual_machine" "win" {
     custom_data    = file("./files/winrm.ps1")
   }
 
+    os_profile_secrets {
+    source_vault_id = "${azurerm_key_vault.example.id}"
+
+    vault_certificates {
+      certificate_url   = "${azurerm_key_vault_certificate.example.secret_id}"
+      certificate_store = "My"
+    }
+  }
+
   os_profile_windows_config {
     provision_vm_agent = true
     winrm {
