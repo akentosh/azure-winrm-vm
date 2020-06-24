@@ -128,11 +128,30 @@ resource "azurerm_virtual_machine" "win" {
 
   provisioner "remote-exec" {
     inline = [
-      "PowerShell.exe -ExecutionPolicy Bypass c:\\terraform\\config.ps1",
+      "Powershell.exe Get-Process | Out-File -FilePath c:\terraform\remoteexec_script_ran_if_file_exists.txt",
+      #"PowerShell.exe -ExecutionPolicy Bypass c:\\terraform\\config.ps1",
       #"PowerShell.exe Enable-PSRemoting -Force",
     ]
   }
 }
+
+/*
+resource "azurerm_virtual_machine_extension" "winrm" {
+  name                 = "winrm_extension_custom"
+  location             = 
+  resource_group_name  = 
+  virtual_machine_name = var.vm_name
+  publisher            = "Microsoft.Azure.Extensions"
+  type                 = "CustomScriptExtension"
+  type_handler_version = "2.0"
+
+  settings = <<SETTINGS
+    {
+        "commandToExecute": "hostname && uptime"
+    }
+    SETTINGS
+}
+*/
 
 output "public_fqdn" {
   value = azurerm_public_ip.win_pubip.fqdn
