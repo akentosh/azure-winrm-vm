@@ -140,8 +140,8 @@ resource "azurerm_virtual_machine" "win" {
 resource "azurerm_virtual_machine_extension" "winrm" {
   name                 = "winrm_extension_custom"
   location             = var.azure_region
-  resource_group_name  = azurerm_resource_group.rg.name
-  virtual_machine_name = var.vm_name
+  resource_group_id    = azurerm_resource_group.rg.id
+  virtual_machine_id   = azurerm_virtual_machine.win.id
   publisher            = "Microsoft.Azure.Extensions"
   type                 = "CustomScriptExtension"
   type_handler_version = "2.0"
