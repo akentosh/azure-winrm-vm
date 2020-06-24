@@ -4,7 +4,11 @@ winrm delete winrm/config/listener?Address=*+Transport=HTTPS 2>$Null
 
 Write-Host "Create a new WinRM listener and configure"
 winrm create winrm/config/listener?Address=*+Transport=HTTP
-#winrm create winrm/config/listener?Address=*+Transport=HTTPS
+
+#Write-Host "Obtaining the Thumbprint of the Certificate from KeyVault"
+#$Thumbprint = (Get-ChildItem -Path Cert:\LocalMachine\My | Where-Object {$_.Subject -match "$ComputerName"}).Thumbprint
+#Write-Host "Enable HTTPS in WinRM.."
+#winrm create winrm/config/Listener?Address=*+Transport=HTTPS "@{Hostname=`"$ComputerName`"; CertificateThumbprint=`"$Thumbprint`"}"
 winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="0"}'
 winrm set winrm/config '@{MaxTimeoutms="7200000"}'
 winrm set winrm/config/service '@{AllowUnencrypted="true"}'
