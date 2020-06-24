@@ -113,8 +113,8 @@ resource "azurerm_virtual_machine" "win" {
     host     = azurerm_public_ip.win_pubip.fqdn
     type     = "winrm"
     port     = 5985
-    #https    = false
-    https    = true
+    #https    = true
+    https    = false
     timeout  = "10m"
     user     = var.username
     password = var.password
