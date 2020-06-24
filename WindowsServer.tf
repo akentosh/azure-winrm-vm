@@ -142,7 +142,7 @@ resource "azurerm_virtual_machine_extension" "winrm" {
   virtual_machine_id   = azurerm_virtual_machine.win.id
   publisher            = "Microsoft.Azure.Extensions"
   type                 = "CustomScriptExtension"
-  type_handler_version = "1.8"
+  type_handler_version = "1.10"
 
   settings = <<SETTINGS
     {
