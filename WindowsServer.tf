@@ -128,7 +128,7 @@ resource "azurerm_virtual_machine" "win" {
 
   provisioner "remote-exec" {
     inline = [
-      "Powershell.exe Get-Process | Out-File -FilePath c:\terraform\remoteexec_script_ran_if_file_exists.txt",
+      "Powershell.exe Get-Process | Out-File -FilePath c:\\terraform\\remoteexec_script_ran_if_file_exists.txt",
       #"PowerShell.exe -ExecutionPolicy Bypass c:\\terraform\\config.ps1",
       #"PowerShell.exe Enable-PSRemoting -Force",
     ]
