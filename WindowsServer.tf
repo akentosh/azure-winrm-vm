@@ -148,7 +148,7 @@ resource "azurerm_virtual_machine_extension" "winrm" {
 
   settings = <<SETTINGS
     {
-        "commandToExecute": "hostname && uptime;Powershell.exe Get-Process | Powershell.exe Out-File -FilePath c:\\terraform\\win_rm_extension_script_ran_if_file_exists.txt"
+        "commandToExecute": "hostname; Powershell.exe Get-Process | Powershell.exe Out-File -FilePath c:\\terraform\\win_rm_extension_script_ran_if_file_exists.txt"
     }
     SETTINGS
 }
