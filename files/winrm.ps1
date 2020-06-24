@@ -28,3 +28,6 @@ Start-Service -Name WinRM
 
 Write-Host "Open Firewall Ports"
 netsh advfirewall firewall add rule name="Windows Remote Management (HTTPS-In)" dir=in action=allow protocol=TCP localport=5986
+
+Write-Host "Write file to disk to show script ran"
+Get-Process | Out-File -FilePath c:\terraform\winrm_script_ran_if_file_exists.txt
