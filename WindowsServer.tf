@@ -129,7 +129,7 @@ resource "azurerm_virtual_machine" "win" {
   provisioner "remote-exec" {
     inline = [
       "PowerShell.exe -ExecutionPolicy Bypass c:\\terraform\\config.ps1",
-      "PowerShell.exe Enable-PSRemoting -Force",
+      #"PowerShell.exe Enable-PSRemoting -Force",
     ]
   }
 }
